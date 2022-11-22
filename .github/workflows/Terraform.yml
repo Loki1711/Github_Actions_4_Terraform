@@ -38,10 +38,10 @@ jobs:
     - name: 'Install TFLint'
       run: curl -s https://raw.githubusercontent.com/terraform-linters/tflint/master/install_linux.sh | bash
 
-    # - name: 'Azure Login'
-    #   uses: Azure/login@v1
-    #   with:
-    #     creds: '{"clientId":"${{ secrets.AZURE_AD_CLIENT_ID }}","clientSecret":"${{ secrets.AZURE_AD_CLIENT_SECRET }}","subscriptionId":"${{ secrets.AZURE_SUBSCRIPTION_ID }}","tenantId":"${{ secrets.AZURE_AD_TENANT_ID }}"}'
+    - name: 'Azure Login'
+      uses: Azure/login@v1.4.6
+      with:
+        creds: ${{ secrets.AZURE_CREDENTIALS }}
 
 # - name: 'Terraform Init'
 #   run: terraform init
