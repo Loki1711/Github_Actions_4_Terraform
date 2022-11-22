@@ -33,8 +33,10 @@ jobs:
         chmod +x terraform-install.sh
         ./terraform-install.sh
         rm ./terraform-install.sh
-        terraform version
 
     - name: 'Install TFLint'
       run: curl -s https://raw.githubusercontent.com/terraform-linters/tflint/master/install_linux.sh | bash
+
+    - name: 'Terraform Init'
+      run: terraform init
 
