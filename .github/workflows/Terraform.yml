@@ -20,38 +20,41 @@ jobs:
     defaults:
       run:
         shell: bash
+        working-directory: "./terraform"
 
     steps:
-    # Checkout the repository to the GitHub Actions runner
-    - name: Checkout
-      uses: actions/checkout@v3
+    - uses: actions/checkout@v3
+    - uses: hashicorp/setup-terraform@v2
 
     - name: Setup Terraform
-      uses: hashicorp/setup-terraform@v1
+      uses: hashicorp/setup-terraform@v2
       with:
-        terraform_version: 1.1.0
+        terraform_version: 1.3.5
 
-    - name: Terraform Format
-      id: fmt
-      run: terraform fmt -check
+    - name: Terraform Version
+      run: terraform version
 
-    - name: Terraform Init
-      id: init
-      run: terraform init
+# - name: Terraform Format
+#   id: fmt
+#   run: terraform fmt -check
 
-    - name: Terraform Validate
-      id: validate
-      run: terraform validate -no-color
+# - name: Terraform Init
+#   id: init
+#   run: terraform init
 
-    - name: Terraform Plan
-      id: plan
-      run: terraform plan -no-color -input=false
-      continue-on-error: true
+# - name: Terraform Validate
+#   id: validate
+#   run: terraform validate -no-color
 
-    - name: Terraform Plan Status
-      if: steps.plan.outcome == 'failure'
-      run: exit 1
+# - name: Terraform Plan
+#   id: plan
+#   run: terraform plan -no-color -input=false
+#   continue-on-error: true
 
-    - name: Terraform Apply
-      if: github.ref == 'refs/heads/main'
-      run: terraform apply -auto-approve -input=false
+# - name: Terraform Plan Status
+#   if: steps.plan.outcome == 'failure'
+#   run: exit 1
+
+# - name: Terraform Apply
+#   if: github.ref == 'refs/heads/main'
+#   run: terraform apply -auto-approve -input=false
