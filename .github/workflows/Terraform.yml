@@ -36,14 +36,16 @@ jobs:
     - name: 'Install TFLint'
       run: curl -s https://raw.githubusercontent.com/terraform-linters/tflint/master/install_linux.sh | bash
 
-    - name: 'Terraform Init'
+    - name: Terraform Init
       run: terraform init
 
-    - name: 'Terraform Validate'
-      run: terraform validate
+    - name: Terraform Validate
+      run: terraform validate -no-color
+      continue-on-error: true
 
     - name: Terraform Plan
       run: terraform plan
+      continue-on-error: true
 
     - name: Terraform Plan Status
       if: steps.plan.outcome == 'failure'
