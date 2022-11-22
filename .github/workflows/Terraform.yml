@@ -33,7 +33,6 @@ jobs:
         chmod +x terraform-install.sh
         ./terraform-install.sh
         rm ./terraform-install.sh
-        az version
 
     - name: 'Install TFLint'
       run: curl -s https://raw.githubusercontent.com/terraform-linters/tflint/master/install_linux.sh | bash
@@ -41,7 +40,7 @@ jobs:
     - name: 'Azure Login'
       uses: Azure/login@v1.4.6
       with:
-        creds: ${{ secrets.AZURE_CREDENTIALS }}
+        creds: '${{ secrets.AZURE_CREDENTIALS }}'
 
 # - name: 'Terraform Init'
 #   run: terraform init
