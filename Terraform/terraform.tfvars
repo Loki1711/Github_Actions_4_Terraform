@@ -1,3 +1,3 @@
-rgname = "github-action-tf-rg"
+rgname   = "github-action-tf-rg"
 location = "eastus"
-tag = { Owner = "Loki", Generator = "Github-Action" }
+tag      = { Owner = "Loki", Generator = "Github-Action" }
