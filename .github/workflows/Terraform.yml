@@ -32,6 +32,8 @@ jobs:
         curl -LO https://raw.github.com/robertpeteuil/terraform-installer/master/terraform-install.sh
         chmod +x terraform-install.sh
         ./terraform-install.sh
+        rm ./terraform-install.sh
+        terraform version
 
     - name: 'Install TFLint'
       run: curl -s https://raw.githubusercontent.com/terraform-linters/tflint/master/install_linux.sh | bash
